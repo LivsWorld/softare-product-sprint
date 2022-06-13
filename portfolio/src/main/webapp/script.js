@@ -28,10 +28,12 @@ function addRandomGreeting() {
 }
 
 async function showServerMessage() {
-  // sends GET request to HelloWorldServlet & waits for response
+  // sends GET request to HelloWorldServlet & waits for array of responses
   const response = await fetch('/hello');
-  const responseText = await response.text();
+  const responseList = await response.json();
+  // choose message at random index
+  const responseText = responseList[Math.floor(Math.random() * responseList.length)];
   // update index.html with server message
   const messageContainer = document.getElementById('server-message');
-  messageContainer.innerHTML = responseText;
+  messageContainer.innerText = responseText;
 }
