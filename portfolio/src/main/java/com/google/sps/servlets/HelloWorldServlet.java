@@ -16,9 +16,15 @@ public class HelloWorldServlet extends HttpServlet {
   /** List of random messages to send */
   private ArrayList<String> messageList = new ArrayList<>(
     Arrays.asList(
-                  "Here's a fun fact about me",
-                  "This is another fun fact!",
-                  "Yet another interesting fact"
+                  "Drawing people",
+                  "Painting",
+                  "Biking around Davis",
+                  "Gardening",
+                  "Eating with friends",
+                  "Walking in nature",
+                  "Church community",
+                  "Good conversations",
+                  "Family"
     ));
 
   /** When /hello is GET requested, returns messageList to client as JSON string */
