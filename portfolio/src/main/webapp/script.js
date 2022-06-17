@@ -39,5 +39,12 @@ async function showServerMessage() {
 }
 
 async function submitHandler(formData) {
-  console.log(formData);
+  const params = new URLSearchParams(formData);
+  try {
+    const response = await fetch('/form-handler', {method:'POST', body: params});
+    const data = await response.json();
+    document.getElementById('response').innerText = data;
+  } catch (error) {
+    console.log(error);
+  }
 }
