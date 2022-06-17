@@ -37,3 +37,7 @@ async function showServerMessage() {
   const messageContainer = document.getElementById('server-message');
   messageContainer.innerText = responseText;
 }
+
+async function submitHandler(formData) {
+  console.log(formData);
+}
