@@ -1,4 +1,20 @@
+body {
+  background-color: mistyrose;
+}
+
+html {
+  scroll-padding-top: 70px;
+}
+
+p {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #content {
+  margin-top: 70px;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   width: 650px;
@@ -8,8 +24,10 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background-color: lightseagreen;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 li {
@@ -25,13 +43,13 @@ li a {
 }
 
 li a:hover {
-  background-color: rgb(31, 134, 129);
-}
-
-#greeting-container {
-  margin-top: 20px;
+  background-color: rgb(27, 139, 134);
 }
 
 #selfie {
   width: 50%;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

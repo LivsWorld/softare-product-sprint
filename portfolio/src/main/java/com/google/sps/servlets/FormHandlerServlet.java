@@ -1,6 +1,8 @@
 package com.google.sps.servlets;
-import com.google.sps.data.Contact;
 
+import com.google.sps.data.Contact;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,20 +39,18 @@ public class FormHandlerServlet extends HttpServlet {
     // KeyFactory to create unique IDs for entities
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Contact");
     Key contactKey = datastore.allocateId(keyFactory.newKey());
-    FullEntity contactEntity =
-        Entity.newBuilder(contactKey)
-            .set("name", name)
-            .set("email", email)
-            .set("message", textValue)
-            .set("timestamp", timestamp)
-            .build();
+    FullEntity contactEntity = Entity.newBuilder(contactKey)
+        .set("name", name)
+        .set("email", email)
+        .set("message", textValue)
+        .set("timestamp", timestamp)
+        .build();
     // store "Contact" in Datastore
     datastore.put(contactEntity);
 
     // load contact just stored in Datastore
-    Query<Entity> query = 
-          Query.newEntityQueryBuilder().setKind("Contact")
-          .setFilter(PropertyFilter.eq("__key__", contactKey)).build();
+    Query<Entity> query = Query.newEntityQueryBuilder().setKind("Contact")
+        .setFilter(PropertyFilter.eq("__key__", contactKey)).build();
     QueryResults<Entity> results = datastore.run(query);
 
     // extract data from contact entity
@@ -62,11 +62,11 @@ public class FormHandlerServlet extends HttpServlet {
     long entityTimestamp = entity.getLong("timestamp");
     Contact contact = new Contact(entityId, entityName, entityEmail, entityMessage, entityTimestamp);
 
-    Gson gson = new Gson();
-    response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(contact));
+    //Gson gson = new Gson();
+    //response.setContentType("application/json;");
+    //response.getWriter().println(gson.toJson(contact));
 
-    // Redirect user to home page
-    //response.sendRedirect("/");
+    response.sendRedirect("/thanks.html?name=" + 
+    URLEncoder.encode(entityName, StandardCharsets.UTF_8));
   }
 }

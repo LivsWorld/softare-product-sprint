@@ -12,21 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
-
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
-}
-
 async function showServerMessage() {
   // sends GET request to HelloWorldServlet & waits for array of responses
   const response = await fetch('/hello');
@@ -39,12 +24,9 @@ async function showServerMessage() {
 }
 
 async function submitHandler(formData) {
-  const params = new URLSearchParams(formData);
-  try {
-    const response = await fetch('/form-handler', {method:'POST', body: params});
-    const data = await response.json();
-    document.getElementById('response').innerText = data;
-  } catch (error) {
-    console.log(error);
-  }
+  const params = new FormData(formData);
+  const response = await fetch('/form-handler', {method:'POST', body: params});
+  console.log(response);
+  const data = await response.json();
+  document.getElementById('response').innerText = data;
 }
