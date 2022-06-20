@@ -18,6 +18,37 @@ async function showServerMessage() {
   const responseList = await response.json();
   // choose message at random index
   const responseText = responseList[Math.floor(Math.random() * responseList.length)];
+
+  let image;
+  switch (responseText) {
+    case "Drawing People":
+      image = "";
+      break;
+    case "Painting":
+      image = "";
+      break;
+    case "Biking around Davis":
+      image = "";
+      break;
+    case "My plants":
+      image = "";
+      break;
+    case "Eating with friends":
+      image = "";
+      break;
+    case "Walking in nature":
+      image = "";
+      break;
+    case "Church community":
+      image = "";
+      break;
+    case "Good conversations":
+      image = "";
+      break;
+    case "Family":
+      image = "";
+      break;
+  }
   // update index.html with server message
   const messageContainer = document.getElementById('server-message');
   messageContainer.innerText = responseText;

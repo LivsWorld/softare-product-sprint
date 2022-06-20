@@ -19,7 +19,7 @@ public class HelloWorldServlet extends HttpServlet {
                   "Drawing people",
                   "Painting",
                   "Biking around Davis",
-                  "Gardening",
+                  "My plants",
                   "Eating with friends",
                   "Walking in nature",
                   "Church community",
