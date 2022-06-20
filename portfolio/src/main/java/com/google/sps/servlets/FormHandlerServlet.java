@@ -1,6 +1,5 @@
 package com.google.sps.servlets;
 
-import com.google.sps.data.Contact;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
@@ -8,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 
@@ -53,19 +51,11 @@ public class FormHandlerServlet extends HttpServlet {
         .setFilter(PropertyFilter.eq("__key__", contactKey)).build();
     QueryResults<Entity> results = datastore.run(query);
 
-    // extract data from contact entity
+    // extract name from contact entity
     Entity entity = results.next();
-    long entityId = entity.getKey().getId();
     String entityName = entity.getString("name");
-    String entityEmail = entity.getString("email");
-    String entityMessage = entity.getString("message");
-    long entityTimestamp = entity.getLong("timestamp");
-    Contact contact = new Contact(entityId, entityName, entityEmail, entityMessage, entityTimestamp);
 
-    //Gson gson = new Gson();
-    //response.setContentType("application/json;");
-    //response.getWriter().println(gson.toJson(contact));
-
+    // redirect to "Thanks" page with name as search param
     response.sendRedirect("/thanks.html?name=" + 
     URLEncoder.encode(entityName, StandardCharsets.UTF_8));
   }

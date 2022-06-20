@@ -23,10 +23,17 @@ async function showServerMessage() {
   messageContainer.innerText = responseText;
 }
 
+function thanksMessage() {
+  const params = (new URL(document.location)).searchParams;
+  const name = params.get("name");
+  const messageContainer = document.getElementById('thanks-message');
+  messageContainer.innerText = "Thank you, " + name + "! Your message was received.";
+}
+/*
 async function submitHandler(formData) {
   const params = new FormData(formData);
   const response = await fetch('/form-handler', {method:'POST', body: params});
   console.log(response);
   const data = await response.json();
   document.getElementById('response').innerText = data;
-}
+}*/
