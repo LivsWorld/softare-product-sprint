@@ -13,45 +13,55 @@
 // limitations under the License.
 
 async function showServerMessage() {
+  const messageContainer = document.getElementById('server-message');
+  // clear previous message & image (if any)
+  while (messageContainer.firstChild) {
+    messageContainer.removeChild(messageContainer.firstChild);
+  }
   // sends GET request to HelloWorldServlet & waits for array of responses
   const response = await fetch('/hello');
   const responseList = await response.json();
   // choose message at random index
   const responseText = responseList[Math.floor(Math.random() * responseList.length)];
 
-  let image;
+  // set image source based on message
+  let imgSrc;
   switch (responseText) {
-    case "Drawing People":
-      image = "";
-      break;
     case "Painting":
-      image = "";
+      imgSrc = "/images/painting.png";
       break;
     case "Biking around Davis":
-      image = "";
+      imgSrc = "/images/bike.jpeg";
       break;
     case "My plants":
-      image = "";
+      imgSrc = "/images/plants.jpeg";
       break;
     case "Eating with friends":
-      image = "";
+      imgSrc = "/images/food.jpeg";
       break;
     case "Walking in nature":
-      image = "";
+      imgSrc = "/images/nature.jpeg";
       break;
     case "Church community":
-      image = "";
+      imgSrc = "/images/church.jpeg";
       break;
     case "Good conversations":
-      image = "";
+      imgSrc = "/images/conversations.jpeg";
       break;
     case "Family":
-      image = "";
+      imgSrc = "/images/family.jpeg";
       break;
   }
-  // update index.html with server message
-  const messageContainer = document.getElementById('server-message');
-  messageContainer.innerText = responseText;
+  // display message on fun.html
+  const para = document.createElement("p");
+  const text = document.createTextNode(responseText);
+  para.appendChild(text);
+  messageContainer.appendChild(para);
+  // display corresponding image
+  let img = document.createElement("img");
+  img.src = imgSrc;
+  img.id = "random-img"
+  messageContainer.appendChild(img);
 }
 
 function thanksMessage() {

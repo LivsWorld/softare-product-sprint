@@ -16,7 +16,6 @@ public class HelloWorldServlet extends HttpServlet {
   /** List of random messages to send */
   private ArrayList<String> messageList = new ArrayList<>(
     Arrays.asList(
-                  "Drawing people",
                   "Painting",
                   "Biking around Davis",
                   "My plants",
