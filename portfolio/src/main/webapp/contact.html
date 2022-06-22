@@ -2,14 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Olivia Shen's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivia Shen - Contact</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
+    <ul id="navbar">
+      <li><a href="/index.html">About</a></li>
+      <li><a href="/projects.html">Projects</a></li>
+      <li><a href="/fun.html">Fun</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
     <div id="content">
       <h1>Contact me</h1>
-      <form action="/form-handler" method="POST">
+      <form action="/form-handler" method="POST" id="contact-form">
         <p>Let's get in touch!</p>
         <label for="name-input">Name</label>
         <input type="text" id="name-input" name="name-input" placeholder="Your name"/>
@@ -20,7 +27,7 @@
         <label for="text-input">Message</label>
         <textarea id="text-input" name="text-input" placeholder="What do you want to talk about?"></textarea>
         <br/>
-        <input type="submit" />
+        <input class="button" type="submit" />
       </form>
     </div>
   </body>

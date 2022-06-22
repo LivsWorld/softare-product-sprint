@@ -1,8 +1,10 @@
-This directory is where you'll write all of your code!
+### Olivia Shen's Portfolio
+This is the directory for my personal portfolio, which I built during weeks 1-3 of Google SPS. It uses HTML, CSS, and JavaScript for the client side and Java servlets for the server side. I also use the Google Datastore API for persistent storage of contact information.
 
-By default it contains a barebones portfolio web app. To run a local server,
-execute this command:
+Visit the portfolio [here](http://oshen-sps-summer22.appspot.com)!
 
-```
-mvn package exec:java
-```
+### Images
+![About page](/readme-images/about.png)
+![Projects page](/readme-images/projects.png)
+![Fun page](/readme-images/fun.png)
+![Contact page](/readme-images/contact.png)
